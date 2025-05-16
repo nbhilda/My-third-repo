@@ -1,8 +1,11 @@
-name: test
+name: html
 on: push
 jobs:
-  Tiku:
+  html:
     runs-on: ubuntu-latest
     steps:
-      - run: echo " 🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      
       
