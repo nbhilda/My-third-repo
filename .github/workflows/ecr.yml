@@ -41,16 +41,10 @@ jobs:
           # FULL_REPO_NAME="${ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com/${IMAGE_REPO_NAME}"
           
           # Build the Docker image
-          docker build -t tikuapp:v1
+        #   docker build -t ecr-container-repo/tikuapp:v1 .
 
-          # Push the Docker image to Amazon ECR
-          # docker push 536697270964.dkr.ecr.us-east-1.amazonaws.com/ecr-container-repo:tikuapp-latest
+
           
-          # Tag the Docker image
-          # docker tag $IMAGE_REPO_NAME:latest $FULL_REPO_NAME:$IMAGE_TAG
-
-          # Push the Docker image to Amazon ECR
-          # docker push $FULL_REPO_NAME:$IMAGE_TAG
 
 
 
