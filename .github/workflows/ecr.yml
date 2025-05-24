@@ -3,12 +3,13 @@ on:
     workflow_dispatch:
         inputs:
           image_tag:
+            type: string
             description: 'Image tag to deploy'
             required: true
             default: 'latest'
-    push:
-      branches:
-        - master  
+    # push:
+    #   branches:
+    #     - master  
 
 jobs:
   html:
@@ -35,7 +36,7 @@ jobs:
         id: build-image
         run: |
          docker build -t ecr-container-repo:latest .  # it is building the docker image 
-         docker tag ecr-container-repo:latest ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/ecr-container-repo:v1
+         docker tag ecr-container-repo:latest ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/ecr-container-repo:${{ github.event.inputs.image_tag }}
          docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/ecr-container-repo:v1
 
 
