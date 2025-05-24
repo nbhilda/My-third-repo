@@ -34,7 +34,9 @@ jobs:
       - name: Build, tag, and push image to Amazon ECR
         id: build-image
         run: |
-         docker build -t ecr-container-repo .
+         docker build -t ecr-container-repo:latest .  # it is building the docker image 
+         docker tag ecr-container-repo:latest ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/ecr-container-repo:v1
+         docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/ecr-container-repo:v1
 
 
 
