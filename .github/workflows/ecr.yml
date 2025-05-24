@@ -34,14 +34,7 @@ jobs:
       - name: Build, tag, and push image to Amazon ECR
         id: build-image
         run: |
-          # IMAGE_REPO_NAME=githubbucket91
-          # IMAGE_TAG=${{ github.event.inputs.image_tag }}
-          # ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
-          # REGION=$(aws configure get region)
-          # FULL_REPO_NAME="${ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com/${IMAGE_REPO_NAME}"
-          
-          # Build the Docker image
-        #   docker build -t ecr-container-repo/tikuapp:v1 .
+         docker build -t ecr-container-repo
 
 
           
