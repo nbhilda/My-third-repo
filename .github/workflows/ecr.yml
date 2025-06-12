@@ -38,7 +38,8 @@ jobs:
           docker build -t ecr-container-repo:latest .  # it is building the docker image
 
       - name: Tag to Amazon ECR
-        run: docker tag ecr-container-repo:latest ***.dkr.ecr.us-east-1.amazonaws.com/ecr-container-repo:latest
+        run: docker tag ecr-container-repo:latest 123456789012.dkr.ecr.us-east-1.amazonaws.com/ecr-container-repo:latest
+
       
       - name: Push to Amazon ECR
         run: docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/ecr-container-repo:${{ github.event.inputs.image_tag }}
