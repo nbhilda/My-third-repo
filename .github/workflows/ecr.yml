@@ -1,15 +1,15 @@
 name: ECR-Deploy
-on: 
-    workflow_dispatch:
-        inputs:
-          image_tag:
-            type: string
-            description: 'Image tag to deploy'
-            required: true
-            default: 'latest'
-    # push:
-    #   branches:
-    #     - master  
+on:
+  workflow_dispatch:
+    inputs:
+      image_tag:
+        type: string
+        description: 'Image tag to deploy'
+        required: true
+        default: 'latest'
+  push:
+    branches:
+      - master
 
 jobs:
   html:
@@ -32,21 +32,21 @@ jobs:
         with:
           mask-password: 'false'
 
-      - name: Build,image to Amazon ECR
+      - name: Build image to Amazon ECR
         id: build-image
         run: |
-         docker build -t ecr-container-repo:latest .  # it is building the docker image 
+          docker build -t ecr-container-repo:latest .  # it is building the docker image
 
-      - name: Tagto Amazon ECR
+      - name: Tag to Amazon ECR
         run: docker tag ecr-container-repo:latest ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/ecr-container-repo:${{ github.event.inputs.image_tag }}
       
       - name: Push to Amazon ECR
         run: docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/ecr-container-repo:${{ github.event.inputs.image_tag }}
 
       - name: setup kubectl
-        run:
-            aws eks update-kubeconfig  --name "my-eks-cluster"
-            kubectl get pods --all-namespaces 
+        run: |
+          aws eks update-kubeconfig --name "my-eks-cluster"
+          kubectl get pods --all-namespaces
 
       
 
