@@ -48,7 +48,7 @@ jobs:
           aws eks update-kubeconfig --name "my-eks-cluster"
           kubectl get pods --all-namespaces
 
-          docker tag ecr-container-repo:latest ***.dkr.ecr.us-east-1.amazonaws.com/ecr-container-repo:latest
+         
 
 
       
