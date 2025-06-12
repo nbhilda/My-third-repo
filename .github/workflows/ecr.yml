@@ -46,7 +46,7 @@ jobs:
       - name: setup kubectl
         run:
             aws eks update-kubeconfig  --name "my-eks-cluster"
-            kubectl get pods 
+            kubectl get pods --all-namespaces
 
 
 
