@@ -42,6 +42,11 @@ jobs:
       - name: Push image to Amazon ECR
         run: docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/ecr-container-repo:${{ github.event.inputs.image_tag || github.sha || 'latest' }}
 
+      - name: setup kubectl
+        run: |
+          aws eks update-kubeconfig --name "my-eks-cluster"
+          kubectl get pods --all-namespace
+
       
 
       
