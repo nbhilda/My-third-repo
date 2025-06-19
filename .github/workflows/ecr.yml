@@ -36,6 +36,8 @@ jobs:
         id: build-image
         run: |
           docker build -t ecr-container-repo:latest .  
+            docker tag ecr-container-repo:latest ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/ecr-container-repo:${{ github.event.inputs.image_tag }}
+            docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/ecr-container-repo:${{ github.event.inputs.image_tag }}
 
       
 
