@@ -1,0 +1,19 @@
+apiVersion: apps/v1  # Specifies Kubernetes API version
+kind: Deployment  # Defines the type of resource
+metadata:
+  name: devops-app  # Name of the deployment
+spec:
+  replicas: 3  # Number of pods to run
+  selector:
+    matchLabels:
+      app: devops-app  # Defines pod labels to match
+  template:
+    metadata:
+      labels:
+        app: devops-app  # Label to identify pods
+    spec:
+      containers:
+        - name: devops-app-container  # Name of the container
+          image: 891377331437.dkr.ecr.us-east-1.amazonaws.com/tiku1503:v1 # Docker image to use
+          ports:
+         - containerPort: 80  # Exposing port
