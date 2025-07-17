@@ -50,11 +50,7 @@ jobs:
       - name: kebernetes deployment step
         run:
             kubectl apply -f deployment.yml
-            kubectl apply -f service.yml
-
-      - name: callint the public address
-        run: |
-          kubectl get svc devops-service -n default
+            
 
       
 
