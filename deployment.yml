@@ -3,7 +3,7 @@ kind: Deployment  # Defines the type of resource
 metadata:
   name: devops-app  # Name of the deployment
 spec:
-  replicas: 3  # Number of pods to run
+  replicas: 2  # Number of pods to run
   selector:
     matchLabels:
       app: devops-app  # Defines pod labels to match
