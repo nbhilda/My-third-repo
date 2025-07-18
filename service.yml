@@ -5,7 +5,7 @@ metadata:
   annotations:
     service.beta.kubernetes.io/aws-load-balancer-type: "nlb"  # Use Network Load Balancer
   labels:
-    app: devops-app  # Label to identify the service
+    app: devops-app  
 spec:
   type: LoadBalancer
   selector:
