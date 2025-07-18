@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: devops-app-container  # Name of the container
-          image: 891377331437.dkr.ecr.us-east-1.amazonaws.com/tiku1503:v1 # Docker image to use
+          image: 536697270964.dkr.ecr.us-east-1.amazonaws.com/ecr-container-repo:c7cf3c84b56c4cee93283976b624af42117af4c4
           ports:
             - containerPort: 80  # Exposing port
